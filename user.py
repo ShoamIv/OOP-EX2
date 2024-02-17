@@ -19,11 +19,13 @@ class User(Observer, Observable):
 
     def follow(self, u):
         if self.__online_flag:
-            self.add_observer(u)
+            u.add_observer(self)
+            print(str(self.__name) + " started following " + str(u.get_name()))
 
     def unfollow(self, u):
         if self.__online_flag:
-            self.remove_observer(u)
+            u.remove_observer(self)
+            print(str(self.__name) + "  unfollowed " + str(u.get_name()))
 
     def print_notifications(self):
         if self.__online_flag:

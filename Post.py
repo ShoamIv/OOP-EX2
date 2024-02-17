@@ -15,11 +15,15 @@ class Post(Observable):
         self.add_observer(u)
 
     def like(self, u):
-        info = u.get_name() + " liked your post"
+        if self.u.get_name == u.get_name:
+            return False
+        info = "notification to "+self.u.get_name()+": " + u.get_name() + " liked your post"
         self.notify_observable(info)
 
     def comment(self, u, commented):
-        self.notify_observable(u.get_name() + " commented on your post:" + commented)
+        if self.u.get_name == u.get_name:
+            return False
+        self.notify_observable("notification to "+self.u.get_name()+": " + u.get_name() + " commented on your post: " + commented)
 
 
 class TextPost(Post):
@@ -54,7 +58,7 @@ class SalePost(Post):
     def discount(self, discount, password):
         if self.u.get_password() == password:
             self.sale_price -= self.sale_price * (discount / 100)
-            print("Discount on " + self.u.get_name() + " product! the new price is:" + str(self.sale_price))
+            print("Discount on " + self.u.get_name() + " product! the new price is: " + str(self.sale_price))
 
     def sold(self, password):
         if self.u.get_password() == password:
