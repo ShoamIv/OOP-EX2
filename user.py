@@ -1,5 +1,13 @@
 from notify import Observer, Observable
 
+"""
+This class represents the user.
+Notice that each user is observer and observable.
+Hence this class inherited from Observable and from Observer.
+This class also contains the factory method "publish_post"
+publish_post responsible for sending each action(text,image,sell).
+"""
+
 
 class User(Observer, Observable):
 
@@ -36,9 +44,10 @@ class User(Observer, Observable):
     def __str__(self):
         return f"User name: {self.get_name()}, Number of posts: {len(self.post)}, Number of followers: {len(self.get_observers())}"
 
-    #
-    # factory methood
-    #
+    """
+    factory method.
+    """
+
     def publish_post(self, *args):
         from Post import TextPost, SalePost, ImagePost
         self.notify_observable(self.get_name() + " has a new post")
@@ -54,5 +63,4 @@ class User(Observer, Observable):
         elif args[0] == "Sale":
             p = SalePost(*args, self)
             self.post.append(p)
-
-        return p
+            return p

@@ -1,5 +1,11 @@
 from user import User
 
+"""
+This class built as Singleton style.
+Creates our one and only SocialNetwork instance.
+In addition responsible for sign up,sign in and log out.
+"""
+
 
 class SocialNetwork:
     __network = None
