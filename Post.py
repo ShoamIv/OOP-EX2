@@ -37,7 +37,7 @@ class TextPost(Post):
 
     def __init__(self, type_of, info, u):
         super().__init__(type_of, info, u)
-        print(u.get_name() + " published a post:\n" + '"' + info + '"'\n')
+        print(u.get_name() + " published a post:\n" + '"' + info + '"'+'\n')
 
     def __str__(self):
         return self.u.get_name() + " published a post:\n" + '"' + self.info + '"'"\n"
