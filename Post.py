@@ -53,7 +53,8 @@ class ImagePost(Post):
         image = img.imread(self.info)
         plt.imshow(image)
         print("Shows picture")
-
+        plt.show()
+        
     def __str__(self):
         return self.u.get_name() + " posted a picture\n"
 
