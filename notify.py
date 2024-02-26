@@ -1,3 +1,10 @@
+"""
+notify class, contains two classes:
+Observable and Observer classes that maintain subscribes for posts and followers.
+for every subscriber notifies them automatically of any state changes.
+"""
+
+
 class Observable:
     def __init__(self):
         self.__observers = []
@@ -13,7 +20,6 @@ class Observable:
 
     def notify_observable(self, info):
         for observer in self.__observers:
-            print(info)
             observer.update(info)
 
 

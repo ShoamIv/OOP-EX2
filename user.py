@@ -25,10 +25,11 @@ class User(Observer, Observable):
     def unfollow(self, u):
         if self.__online_flag:
             u.remove_observer(self)
-            print(str(self.__name) + "  unfollowed " + str(u.get_name()))
+            print(str(self.__name) + " unfollowed " + str(u.get_name()))
 
     def print_notifications(self):
         if self.__online_flag:
+            print(self.get_name() + "'s notifications:")
             for notification in self.notification:
                 print(notification)
 
@@ -40,6 +41,8 @@ class User(Observer, Observable):
     #
     def publish_post(self, *args):
         from Post import TextPost, SalePost, ImagePost
+        self.notify_observable(self.get_name() + " has a new post")
+
         if args[0] == "Text":
             p = TextPost(*args, self)
             self.post.append(p)
@@ -51,4 +54,5 @@ class User(Observer, Observable):
         elif args[0] == "Sale":
             p = SalePost(*args, self)
             self.post.append(p)
-            return p
+
+        return p
