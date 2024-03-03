@@ -49,6 +49,9 @@ class User(Observer, Observable):
     """
 
     def publish_post(self, *args):
+        
+        if not self.__online_flag: return
+            
         from Post import TextPost, SalePost, ImagePost
         self.notify_observable(self.get_name() + " has a new post")
 
