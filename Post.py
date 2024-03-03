@@ -52,9 +52,11 @@ class ImagePost(Post):
     def display(self):
         image = img.imread(self.info)
         plt.imshow(image)
-        print("Shows picture")
+        plt.title('loaded image')
+        plt.axis("off")
         plt.show()
-        
+        print("Shows picture")
+
     def __str__(self):
         return self.u.get_name() + " posted a picture\n"
 
